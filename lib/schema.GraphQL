@@ -1,0 +1,14 @@
+type Query {
+  hello: String
+  test: String
+  courses: [Course]
+  course(id: ID!): Course
+}
+
+type Course {
+  _id: ID
+  tutor: String
+  descripcion: String
+  valoracion: Int
+  tema: String
+}
