@@ -5,10 +5,24 @@ type Query {
   course(id: ID!): Course
 }
 
+type Mutation {
+  # agrega un nuevo curso al registro en DB
+  addCourse(input: CourseInput): Course
+  deleteCourse(_id: ID): Course
+  updateCourse(_id: ID, course: CourseInput): Course
+}
+
 type Course {
   _id: ID
   tutor: String
   descripcion: String
   valoracion: Int
   tema: String
+}
+
+input CourseInput {
+  tutor: String
+  descripcion: String
+  valoracion: Int
+  tema: String!
 }
