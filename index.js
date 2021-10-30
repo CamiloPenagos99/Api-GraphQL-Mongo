@@ -5,8 +5,17 @@ const { graphqlHTTP } = require("express-graphql");
 const { readFileSync } = require("fs");
 const { join } = require("path");
 const resolver = require("./lib/resolver");
+const connec = require("./lib/mongodb");
 
 const app = express();
+const  iniciarApi = async()=>{
+  const con = await connec();
+  console.log('conexion a db terminada', con)
+  app.listen(port, () => {
+    console.log("servidor corriendo", `http://localhost:${port}/api`);
+  });
+}
+
 const port = process.env.port || 3000;
 
 //definir los esquemas
@@ -28,6 +37,5 @@ app.use(
   })
 );
 
-app.listen(port, () => {
-  console.log("servidor corriendo", `http://localhost:${port}/api`);
-});
+iniciarApi();
+
