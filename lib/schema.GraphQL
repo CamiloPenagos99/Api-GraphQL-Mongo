@@ -30,6 +30,7 @@ type Course {
   valoracion: Int
   tema: String
   students: [Student]
+  dept: departamento
 }
 
 
@@ -38,6 +39,7 @@ input CourseInput {
   descripcion: String
   valoracion: Int
   tema: String!
+  dept: departamento
 }
 
 
@@ -50,4 +52,10 @@ type Student {
 input StudentInput {
   name: String
   email: String
+}
+
+enum departamento{
+  ingenieria
+  contabilidad
+  financiero
 }
