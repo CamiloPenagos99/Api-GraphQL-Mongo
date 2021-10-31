@@ -3,6 +3,10 @@ type Query {
   test: String
   courses: [Course]
   course(id: ID!): Course
+  
+  #estudiantes
+  students: [Student]
+  student(id: ID!): Student
 }
 
 type Mutation {
@@ -10,6 +14,13 @@ type Mutation {
   addCourse(input: CourseInput): Course
   deleteCourse(_id: ID): Course
   updateCourse(_id: ID, course: CourseInput): Course
+
+  #agregar estudiante
+  addStudent(input: StudentInput): Student
+
+  #agregar estudiante al curso
+
+  addStudentToCourse(courseID: ID!, studentID: ID!): Course
 }
 
 type Course {
@@ -18,11 +29,25 @@ type Course {
   descripcion: String
   valoracion: Int
   tema: String
+  students: [Student]
 }
+
 
 input CourseInput {
   tutor: String
   descripcion: String
   valoracion: Int
   tema: String!
+}
+
+
+type Student {
+  _id: ID
+  name: String
+  email: String
+}
+
+input StudentInput {
+  name: String
+  email: String
 }
