@@ -42,11 +42,24 @@ input CourseInput {
   dept: departamento
 }
 
+interface Person {
+   _id: ID
+  name: String
+  email: String
+}
 
-type Student {
+type Student implements Person {
   _id: ID
   name: String
   email: String
+}
+
+type Monitor {
+  _id: ID
+  name: String
+  email: String
+  celular: String
+  promedio: Int
 }
 
 input StudentInput {
